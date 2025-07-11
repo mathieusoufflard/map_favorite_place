@@ -59,10 +59,10 @@ class _HomePageState extends State<HomePage> {
     child: Center(
       child: SegmentedButton<String>(
         segments: [
-          ButtonSegment(value: 'Tous', label: CustomText.customText(text: 'Tous', color: Colors.black, fontSize: 13)),
-          ButtonSegment(value: 'Culturel', label: CustomText.customText(text: 'Culturel', color: Colors.black, fontSize: 13)),
-          ButtonSegment(value: 'Restauration', label: CustomText.customText(text: 'Restauration', color: Colors.black, fontSize: 13)),
-          ButtonSegment(value: 'shopping', label: CustomText.customText(text: 'shopping', color: Colors.black, fontSize: 13)),
+          ButtonSegment(value: 'Tous', label: CustomText(text: 'Tous', color: Colors.black, fontSize: 13)),
+          ButtonSegment(value: 'Culturel', label: CustomText(text: 'Culturel', color: Colors.black, fontSize: 13)),
+          ButtonSegment(value: 'Restauration', label: CustomText(text: 'Restauration', color: Colors.black, fontSize: 13)),
+          ButtonSegment(value: 'shopping', label: CustomText(text: 'shopping', color: Colors.black, fontSize: 13)),
         ],
         selected: {selectedCategory},
         onSelectionChanged: (Set<String> value) {
@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
   List<Marker> getFilteredMarkers() {
     final filteredPlaces = selectedCategory == 'Tous'
         ? places
-        : places.where((place) => place.category == selectedCategory).toList();
+        : places.where((place) => place.category.toLowerCase() == selectedCategory.toLowerCase()).toList();
 
     return filteredPlaces.map((place) {
       return Marker(
@@ -117,19 +117,19 @@ class _HomePageState extends State<HomePage> {
                       place.urlImage,
                     ),
                     SizedBox(height: 20),
-                    CustomText.customText(
+                    CustomText(
                       text: place.name,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                     ),
-                    CustomText.customText(
+                    CustomText(
                       text: place.category,
                       color: Colors.black,
                       textAlign: TextAlign.left,
                       fontSize: 15,
                     ),
-                    CustomText.customText(
+                    CustomText(
                       text: place.description,
                       color: Colors.black,
                       fontSize: 17,
