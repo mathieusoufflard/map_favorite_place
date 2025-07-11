@@ -8,10 +8,16 @@ class Place{
 
   final double lng;
 
+  final String urlImage;
+
+  final String description;
+
   Place({
     required this.name,
     required this.category,
     required this.lat,
     required this.lng,
-});
+    required this.urlImage,
+    required this.description,
+  });
 }
