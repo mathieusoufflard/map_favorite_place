@@ -1,6 +1,6 @@
 # 🗺️ Map Favorite Place
 
-Une application Flutter simple permettant d'afficher des lieux sur une carte, avec un filtre par catégorie et une fiche détaillée pour chaque lieu.
+Une application Flutter ios et android simple permettant d'afficher des lieux sur une carte, avec un filtre par catégorie et une fiche détaillée pour chaque lieu.
 
 ## 📱 Fonctionnalités
 
