@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:map_favorite_place/ui/widgets/custom_image_network.dart';
+import 'package:map_favorite_place/ui/widgets/custom_text.dart';
 
 import '../../backend/data/place_data.dart';
+import '../../backend/model/place.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -41,14 +44,7 @@ class _HomePageState extends State<HomePage> {
                     point: LatLng(place.lat, place.lng),
                     child: GestureDetector(
                       onTap: () {
-                        // Tu peux afficher un bottom sheet, un dialog, etc.
-                        showDialog(
-                          context: context,
-                          builder: (_) => AlertDialog(
-                            title: Text(place.name),
-                            content: Text('Catégorie : ${place.category}'),
-                          ),
-                        );
+                        showPlaceInformationBottomSheet(context, place);
                       },
                       child: Icon(
                         Icons.location_on,
@@ -59,10 +55,54 @@ class _HomePageState extends State<HomePage> {
                   );
                 }).toList(),
               ),
-
             ],
           ),
       ),
+    );
+  }
+
+  void showPlaceInformationBottomSheet(BuildContext context, Place place) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+      ),
+      backgroundColor: Colors.white,
+      builder: (context) => SizedBox(
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CustomImageNetwork(
+                  place.urlImage,
+                ),
+                SizedBox(height: 20),
+                CustomText.customText(
+                  text: place.name,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+                CustomText.customText(
+                  text: place.category,
+                  color: Colors.black,
+                  textAlign: TextAlign.left,
+                  fontSize: 15,
+                ),
+                CustomText.customText(
+                  text: place.description,
+                  color: Colors.black,
+                  fontSize: 17,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          )
+        ),
+      )
     );
   }
 }
