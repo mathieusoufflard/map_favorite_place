@@ -18,22 +18,20 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Center(
-            child: FlutterMap(
-              mapController: mapController,
-              options: MapOptions(
-                initialCenter: LatLng(48.8566, 2.3522),
-                initialZoom: 5.0,
-                maxZoom: 18,
-                minZoom: 4,
-              ),
-              children: [
-                TileLayer(
-                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                  userAgentPackageName: 'com.mapfavoriteplace.map_favorite_place',
-                ),
-              ],
+          child: FlutterMap(
+            mapController: mapController,
+            options: MapOptions(
+              initialCenter: LatLng(48.8566, 2.3522),
+              initialZoom: 5.0,
+              maxZoom: 18,
+              minZoom: 4,
             ),
+            children: [
+              TileLayer(
+                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                userAgentPackageName: 'com.mapfavoriteplace.map_favorite_place',
+              ),
+            ],
           ),
       ),
     );
