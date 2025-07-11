@@ -5,6 +5,7 @@ import 'package:map_favorite_place/ui/widgets/custom_image_network.dart';
 import 'package:map_favorite_place/ui/widgets/custom_text.dart';
 import '../../backend/data/place_data.dart';
 import '../../backend/model/place.dart';
+import '../../backend/utils/place_utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -77,9 +78,8 @@ class _HomePageState extends State<HomePage> {
   );
 
   List<Marker> getFilteredMarkers() {
-    final filteredPlaces = selectedCategory == 'Tous'
-        ? places
-        : places.where((place) => place.category.toLowerCase() == selectedCategory.toLowerCase()).toList();
+
+    final filteredPlaces = filterPlacesByCategory(places, selectedCategory);
 
     return filteredPlaces.map((place) {
       return Marker(
