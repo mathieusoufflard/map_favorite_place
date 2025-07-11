@@ -14,14 +14,23 @@ Une application Flutter simple permettant d'afficher des lieux sur une carte, av
 ## 🧱 Structure principale
 
 lib/
+
 ├── backend/
+
 │ ├── data/ # Données locales (place_data.dart)
+
 │ ├── model/ # Modèle Place
+
 │ └── utils/ # Utilitaire de filtrage (place_utils.dart)
+
 ├── ui/
+
 │ └── widgets/ # Widgets réutilisables (CustomText, CustomImageNetwork)
+
 └── pages/
+
 └── home_page.dart # Écran principal
+
 
 ## 🚀 Lancer l'application
 
